@@ -15,12 +15,18 @@ $container['db']  = function ($c) {
 };
 $app->config('container', $container);
 
+$app->view(new View());
+$app->response->headers->set("Content-Type", "application/json");
+
 // list of events
 $app->get('/events', function () use ($app) {
     $db = $app->config('container')['db'];
+    $data = array();
+
     $model = new EventModel($db);
-    $events = $model->getSomeEvents();
-    print_r($events);
+    $data['events'] = $model->getSomeEvents();
+
+    $app->render("foo.php", array("mydata" => $data));;
 });
 
 $app->run();
