@@ -10,7 +10,9 @@ $app = new \Slim\Slim(array(
 );
 
 $app->get('/', function () use ($app) {
-    $app->render("index.php");
+    $client = new ApiClient(new GuzzleHttp\Client());
+    $events = $client->getEventList();
+    $app->render("index.php", array("events" => $events));
 });
 
 $app->run();

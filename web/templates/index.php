@@ -1,3 +1,7 @@
+<?php
+// example taken from http://purecss.io/layouts/ (the blog example)
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -26,12 +30,14 @@
             <div class="posts">
                 <h1 class="content-subhead">Upcoming Events</h1>
 
+<?php foreach($events['events'] as $event): ?>
                 <section class="post">
                     <header class="post-header">
-                        <h2 class="post-title">EVent Title</h2>
+                    <h2 class="post-title"><?=$event['event_name']?></h2>
+                    <img class="post-avatar" alt="avatar" height="48" width="48" src="http://www.gravatar.com/avatar/<?=md5($event['ID'])?>?d=identicon">
 
                         <p class="post-meta">
-                            Details: <a class="post-author" href="#">event link</a>
+                            More details: <a class="post-author" href="/showEvent/<?=$event['ID']?>">click here</a>
                         </p>
                     </header>
 
@@ -43,6 +49,7 @@
                     </div>
 -->
                 </section>
+<?php endforeach; //events ?>
             </div>
 
             <div class="footer">
