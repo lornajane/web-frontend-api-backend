@@ -19,7 +19,7 @@ $app->config('container', $container);
 $app->get('/events', function () use ($app) {
     $db = $app->config('container')['db'];
     $model = new EventModel($db);
-    $events = $model->getEvents();
+    $events = $model->getSomeEvents();
     print_r($events);
 });
 
