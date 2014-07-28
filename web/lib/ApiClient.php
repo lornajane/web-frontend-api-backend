@@ -13,4 +13,10 @@ class ApiClient {
         return $response->json();
     }
 
+    public function getEvent($id) {
+        // todo make this URL configurable
+        $response = $this->client->get("http://localhost:8880/events/" . $id);
+        return $response->json();
+    }
+
 }
