@@ -21,4 +21,16 @@ class EventModel {
         return $results;
     }
 
+    public function getOneEvent($event_id) {
+        // get all future events
+        $sql = "select ID, event_name, event_loc, event_desc
+            from events
+            where ID = :event_id";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(array("event_id" => $event_id));
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+
 }

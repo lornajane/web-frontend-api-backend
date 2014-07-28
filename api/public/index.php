@@ -29,4 +29,15 @@ $app->get('/events', function () use ($app) {
     $app->render("foo.php", array("mydata" => $data));;
 });
 
+// one event
+$app->get('/events/:event_id', function ($event_id) use ($app) {
+    $db = $app->config('container')['db'];
+    $data = array();
+
+    $model = new EventModel($db);
+    $data['events'] = $model->getOneEvent($event_id);
+
+    $app->render("foo.php", array("mydata" => $data));;
+});
+
 $app->run();
