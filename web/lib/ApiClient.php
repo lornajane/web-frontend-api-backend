@@ -19,4 +19,17 @@ class ApiClient {
         return $response->json();
     }
 
+    public function getAccessToken($username, $password) {
+        $request = $this->client->createRequest("POST", "http://localhost:8880/authorizations");
+        $request->setHeader("Content-Type", "application/json");
+        $request->setBody(\GuzzleHttp\Stream\Stream::factory(
+            json_encode(array("username" => $username, 
+                "password" => $password))));
+        $response = $this->client->send($request);
+
+        // check status codes, response format, etc
+        $data = $response->json();
+        return $data['access_token'];
+    }
+
 }
