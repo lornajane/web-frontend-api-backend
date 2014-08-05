@@ -7,6 +7,7 @@ class AuthModel {
         $this->db = $db;
     }
 
+    // access token I start
     public function getAccessTokenFromCreds($username, $password) {
         $sql = "select ID, username, password from user "
             . "where username = :username and password = :password ";
@@ -15,7 +16,9 @@ class AuthModel {
         $stmt->execute(array("username" => $username,
             "password" => md5($password)));
         $user_info = $stmt->fetch(PDO::FETCH_ASSOC);
+// access token I end
 
+// access token II start
         // would be neat to store consumer also
         $token_sql = "insert into oauth_access_tokens set "
             . "user_id = :user_id, access_token = :token ";
@@ -27,6 +30,5 @@ class AuthModel {
             "token" => $token));
 
         return $token;
-
-    }
+    } // access token II end
 }

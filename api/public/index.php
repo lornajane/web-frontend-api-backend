@@ -55,7 +55,6 @@ $app->post('/authorizations', function () use ($app) {
     $model = new AuthModel($db);
     $data['access_token'] = $model->getAccessTokenFromCreds(
         $in['username'], $in['password']);
-
     $app->render("foo.php", array("mydata" => $data));
 }); // end auth
 
