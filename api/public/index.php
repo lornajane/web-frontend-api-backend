@@ -1,5 +1,6 @@
 <?php
 
+// start setup
 require "../vendor/autoload.php";
 spl_autoload_register(function($classname) {
     include __DIR__ . "/../lib/" . $classname . ".php";
@@ -7,18 +8,19 @@ spl_autoload_register(function($classname) {
 
 $app = new \Slim\Slim();
 
-// set up some dependencies
 $container = new \Pimple\Container();
 $container['db']  = function ($c) {
-    $db = new PDO("mysql:host=localhost;dbname=joindin", "joindin", "joindin");
-    return $db;
+    return  new PDO("mysql:host=localhost;dbname=joindin", "joindin", "joindin");
 };
 $app->config('container', $container);
+// end setup
 
+// start view setup
 $app->view(new View());
 $app->response->headers->set("Content-Type", "application/json");
+// end view setup
 
-// list of events
+// start events list
 $app->get('/events', function () use ($app) {
     $db = $app->config('container')['db'];
     $data = array();
@@ -26,10 +28,11 @@ $app->get('/events', function () use ($app) {
     $model = new EventModel($db);
     $data['events'] = $model->getSomeEvents();
 
-    $app->render("foo.php", array("mydata" => $data));;
+    $app->render("foo.php", array("mydata" => $data));
 });
+// end events list
 
-// one event
+// start one event
 $app->get('/events/:event_id', function ($event_id) use ($app) {
     $db = $app->config('container')['db'];
     $data = array();

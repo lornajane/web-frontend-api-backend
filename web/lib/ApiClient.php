@@ -1,5 +1,6 @@
 <?php
 
+// start fetch events
 class ApiClient {
     protected $client;
 
@@ -12,6 +13,7 @@ class ApiClient {
         $response = $this->client->get("http://localhost:8880/events");
         return $response->json();
     }
+// end fetch events
 
     public function getEvent($id) {
         // todo make this URL configurable

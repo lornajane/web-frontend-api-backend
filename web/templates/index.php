@@ -14,53 +14,48 @@
 <body>
 
 <div id="layout" class="pure-g">
-    <div class="sidebar pure-u-1 pure-u-md-1-4">
-        <div class="header">
-            <hgroup>
-                <h1 class="brand-title">Web Frontend</h1>
-                <h2 class="brand-tagline">Example frontend for an API backend</h2>
-            </hgroup>
+  <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+      <hgroup>
+        <h1 class="brand-title">Web Frontend</h1>
+        <h2 class="brand-tagline">Example frontend for an API backend</h2>
+      </hgroup>
 
-        </div>
     </div>
+  </div>
 
-    <div class="content pure-u-1 pure-u-md-3-4">
-        <div>
+  <div class="content pure-u-1 pure-u-md-3-4">
+    <div>
 
-            <div class="posts">
-                <h1 class="content-subhead">Upcoming Events</h1>
+      <div class="posts">
+        <h1 class="content-subhead">Upcoming Events</h1>
 
+<?php // start looping ?>
 <?php foreach($events['events'] as $event): ?>
-                <section class="post">
-                    <header class="post-header">
-                    <h2 class="post-title"><?=$event['event_name']?></h2>
-                    <img class="post-avatar" alt="avatar" height="48" width="48" src="http://www.gravatar.com/avatar/<?=md5($event['ID'])?>?d=identicon">
-
-                        <p class="post-meta">
-                            More details: <a class="post-author" href="/showEvent/<?=$event['ID']?>">click here</a>
-                        </p>
-                    </header>
-
-<!--
-                    <div class="post-description">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        </p>
-                    </div>
--->
-                </section>
+  <section class="post">
+    <header class="post-header">
+    <h2 class="post-title"><?=$event['event_name']?></h2>
+    <img class="post-avatar" alt="avatar" height="48" width="48" 
+      src="http://www.gravatar.com/avatar/<?=md5($event['ID'])?>?d=identicon">
+      <p class="post-meta">
+        More details: <a class="post-author" 
+          href="/showEvent/<?=$event['ID']?>">click here</a>
+      </p>
+    </header>
+  </section>
 <?php endforeach; //events ?>
-            </div>
+<?php // end looping ?>
+      </div>
 
-            <div class="footer">
-                <div class="pure-menu pure-menu-horizontal pure-menu-open">
-                    <ul>
-                        <li><a href="http://purecss.io/">From an example by Pure</a></li>
-                    </ul>
-                </div>
-            </div>
+      <div class="footer">
+        <div class="pure-menu pure-menu-horizontal pure-menu-open">
+          <ul>
+            <li><a href="http://purecss.io/">From an example by Pure</a></li>
+          </ul>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
 
