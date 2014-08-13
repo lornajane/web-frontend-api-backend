@@ -23,12 +23,13 @@ class AuthModel {
         $token_sql = "insert into oauth_access_tokens set "
             . "user_id = :user_id, access_token = :token ";
 
+        // get random number and hash it for token
         $time = gettimeofday();
         $token = sha1($time['usec']);
+
         $token_stmt = $this->db->prepare($token_sql);
         $token_stmt->execute(array("user_id" => $user_info['ID'],
             "token" => $token));
-
         return $token;
     } // access token II end
 }

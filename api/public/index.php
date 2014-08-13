@@ -9,8 +9,8 @@ spl_autoload_register(function($classname) {
 $app = new \Slim\Slim();
 
 $container = new \Pimple\Container();
-$container['db']  = function ($c) {
-    return  new PDO("mysql:host=localhost;dbname=joindin", "joindin", "joindin");
+$container['db'] = function ($c) {
+    return new PDO("mysql:host=localhost;dbname=joindin", "joindin", "joindin");
 };
 $app->config('container', $container);
 // end setup
@@ -49,11 +49,11 @@ $app->post('/authorizations', function () use ($app) {
     $db = $app->config('container')['db'];
     $data = array();
 
-    // totally assuming JSON, should be checking headers etc
+    // horribly assuming JSON. Real code checks first
     $in = json_decode(file_get_contents("php://input"), true);
 
     $model = new AuthModel($db);
-    $data['access_token'] = $model->getAccessTokenFromCreds(
+    $data['token'] = $model->getAccessTokenFromCreds(
         $in['username'], $in['password']);
     $app->render("foo.php", array("mydata" => $data));
 }); // end auth
