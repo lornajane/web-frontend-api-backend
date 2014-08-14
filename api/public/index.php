@@ -53,7 +53,7 @@ $app->post('/authorizations', function () use ($app) {
     $in = json_decode(file_get_contents("php://input"), true);
 
     $model = new AuthModel($db);
-    $data['token'] = $model->getAccessTokenFromCreds(
+    $data['access_token'] = $model->getAccessTokenFromCreds(
         $in['username'], $in['password']);
     $app->render("foo.php", array("mydata" => $data));
 }); // end auth
