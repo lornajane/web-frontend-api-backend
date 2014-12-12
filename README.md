@@ -37,4 +37,4 @@ Projects used in this example project to get me started really quickly:
 Learning More
 -------------
 
-The best way to learn is by doing; this example project is a dumbed-down version of how the new [joind.in](http://m.joind.in) site actually works.  It's an open source project, so why don't you jump in and help?  More info for contributors (current or future!) [http://m.joind.in/about](http://m.joind.in/about)
+The best way to learn is by doing; this example project is a dumbed-down version of how the new [joind.in](http://m.joind.in) site actually works.  It's an open source project, so why don't you jump in and help?  More info for contributors (current or future!) can be found here: [http://m.joind.in/about](http://m.joind.in/about)
