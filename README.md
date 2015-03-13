@@ -20,7 +20,7 @@ Web Frontend
 
 In the `web` directory, run `composer install`.
 
-In `lib\ApiClient` there are hardcoded URLs which point to where your API is.
+Change line 9 of the file web/public/index.php to where your API is.
 
 Your webroot is the `public` directory.
 
